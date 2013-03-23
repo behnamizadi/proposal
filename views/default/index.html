@@ -1,0 +1,29 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,True}}
+{{extend 'layout.html'}}
+<script language='javascript'>
+function addlike(id){
+        $.ajax({
+        url:'{{=URL('default','addlike')}}',
+        data:{'proposal':id}
+    });
+}
+</script>
+{{if 'message' in globals():}}
+<h3>{{=message}}</h3>
+
+
+{{else:}}
+{{l=len(pr)}}
+{{count=1}}
+{{for p in pr:}}s
+    {{=BEAUTIFY(p[1])}}<br/>
+    like:{{=p[3]}}
+    <a href='javascript:void(0);' onclick='javascript:addlike({{=p[0]}});'>+</a><hr/>
+    {{count+=1}}
+    {{if count==l:break}}
+    {{pass}}
+{{pass}}
+{{if page>1:}}<a href='{{=URL(vars=dict(page=page-1))}}'>previous</a>{{pass}}
+{{if len(pr)>items_per_page:}}<a href='{{=URL(vars=dict(page=page+1))}}'>next</a>{{pass}}
+{{block right_sidebar}}
+{{end}}
