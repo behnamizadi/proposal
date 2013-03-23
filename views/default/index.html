@@ -20,7 +20,7 @@ function addlike(id){
     like:{{=p[3]}}
     <a href='javascript:void(0);' onclick='javascript:addlike({{=p[0]}});'>+</a><hr/>
     {{count+=1}}
-    {{if count==l:break}}
+    {{if l>items_per_page and count==l:break}}
     {{pass}}
 {{pass}}
 {{if page>1:}}<a href='{{=URL(vars=dict(page=page-1))}}'>previous</a>{{pass}}
