@@ -12,11 +12,9 @@
 if not request.env.web2py_runtime_gae:
     ## if NOT running on Google App Engine use SQLite or other DB
     #db = DAL('sqlite://storage.sqlite')
-    db = DAL('postgres://behnamizadi:4145633149@79.175.165.230:5432/testdb'
-             ,check_reserved=['postgres']
-             ,migrate_enabled=False)
+    db = DAL('postgres://behnamizadi:4145633149@79.175.165.230:5432/testdb',check_reserved=['postgres'])
     ## connect to Google BigTable (optional 'google:datastore://namespace')
-    db = DAL('google:datastore')
+    #db = DAL('google:datastore')
     ## store sessions and tickets there
     session.connect(request, response, db = db)
     ## or store session in Memcache, Redis, etc.
