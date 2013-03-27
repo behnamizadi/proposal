@@ -13,7 +13,7 @@ def index():
     page=1
     if request.vars['page']:
         page=max(page,int(request.vars['page']))
-    items=7
+    items=10
     limit=((page-1)*items,((page)*items)+1)
     proposals = db(db.proposal).select(limitby=limit)
     pr=[]
@@ -27,9 +27,6 @@ def index():
 def create():
    form=SQLFORM(db.proposal).process(next=URL('index'))
    return dict(form=form)
-
-def likeplus():
-    pass
 
 def user():
     """
@@ -68,6 +65,8 @@ def addlike():
     else:
         db.like.insert(like=1,author=userid,proposal=ids)
         return 'added %s'% ids
+
+
 def call():
     """
     exposes services. for example:
