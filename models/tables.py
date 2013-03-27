@@ -29,7 +29,7 @@ db.proposal.created_on.readable = db.proposal.created_on.writable = False
 
 #########################################################################
 
-db.define_table('like',
+db.define_table('lyke',
     Field('author','reference auth_user'),
-    Field('like','integer'),
+    Field('lyke','integer'),
     Field('proposal','reference proposal'))

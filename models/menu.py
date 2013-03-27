@@ -10,7 +10,7 @@ response.subtitle = T('customize me!')
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html
 response.meta.author = 'behnam izadi <behnamizadi@yahoo.com>'
-response.meta.description = 'staff suggestion system'
+response.meta.description = 'suggestion system'
 response.meta.keywords = 'proposal, suggestion, framework'
 response.meta.generator = 'Web2py Web Framework'
 response.meta.copyright = 'Copyright 2013'
@@ -26,7 +26,10 @@ response.menu = [
     (T('صفحه اصلی'), False, URL('default','index'),'')
     ]
 response.menu+=[
-        (SPAN('نظرات',_style='color:yellow'),False,'index', [(SPAN('افزودن نظر جدید'),False,URL('default','create'),'')])]
+        (SPAN('نظرات',_style='color:yellow'),False,URL('default','index'),
+          [(SPAN('افزودن نظر جدید'),False,URL('default','create'),'')]
+          )
+                ]
 #########################################################################
 ## provide shortcuts for development. remove in production
 #########################################################################

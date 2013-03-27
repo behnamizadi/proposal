@@ -20,7 +20,7 @@ def index():
     proposals = db(db.proposal).select(limitby=limit)
     pr=[]
     for p in proposals:
-        l=len(db(db.like.proposal==int(p.id)).select())
+        l=len(db(db.lyke.proposal==int(p.id)).select())
         pr.append([p.id,p.title,p.created_by,l])
 
     return dict(pr=pr,page=page,items_per_page=items)
@@ -61,11 +61,11 @@ def addlike():
     l=0
     userid=auth.user_id
     ids=request.vars['proposal']
-    l=db((db.like.proposal==ids)&(db.like.author==userid)).count()
+    l=db((db.lyke.proposal==ids)&(db.lyke.author==userid)).count()
     if l>0:
         return '%s can not add another like. current=%s' %(ids,l)
     else:
-        db.like.insert(like=1,author=userid,proposal=ids)
+        db.lyke.insert(lyke=1,author=userid,proposal=ids)
         return 'added %s'% ids
 
 
