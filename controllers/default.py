@@ -8,8 +8,10 @@
 ## - download is for downloading files uploaded in the db (does streaming)
 ## - call exposes all registered services (none by default)
 #########################################################################
-
+title="سیستم انتقادات و پیشنهادات"
 def index():
+    response.title=title
+    response.subtitle="فهرست پیشنهادات"
     page=1
     if request.vars['page']:
         page=max(page,int(request.vars['page']))
